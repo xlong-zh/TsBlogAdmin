@@ -1,104 +1,48 @@
-const TOKENKEY = 'Admin-Token'; // token键
-
-/**
- * 获取本地sessionStorage/localStorage
- * @param {String} key - 键名
- * @return {String} 本地存储值
- */
-export const getStore = key => {
-  if (localStorage.rememberStatus === 'false') {
-    return sessionStorage.getItem(key);
-  }else{
+import { TOKEN_KEY } from '@/config/consts';
+const rememberStatus: boolean = localStorage.getItem('rememberStatus') === 'true' ? true : false;
+// 获取本地sessionStorage/localStorage
+export const getStore = (key: string) => {
+  if (rememberStatus) {
     return localStorage.getItem(key);
+  } else {
+    return sessionStorage.getItem(key);
   }
 };
 
-/**
- * 设置本地sessionStorage/localStorage
- * @param {String} key - 键名
- */
-export const setStore = (key, value) => {
-  if (localStorage.rememberStatus === 'false') {
-    return sessionStorage.setItem(key,value);
-  }else{
+// 设置本地sessionStorage/localStorage
+export const setStore = (key: string, value: string) => {
+  if (rememberStatus) {
     return localStorage.setItem(key, value);
+  } else {
+    return sessionStorage.setItem(key, value);
   }
 };
-/**
- * 移除sessionStorage/localStorage
- * @param {String} key - 键名
- */
-export const removeStore = key => {
-  if (localStorage.rememberStatus === 'false') {
-    return sessionStorage.removeItem(key);
-  }else{
+// 移除sessionStorage/localStorage
+export const removeStore = (key: string) => {
+  if (rememberStatus) {
     return localStorage.removeItem(key);
+  } else {
+    return sessionStorage.removeItem(key);
   }
 };
-/**
- * 移除全部存储数据
- */
+// 移除全部存储数据
 export const removeAll = () => {
   return localStorage.clear();
 };
 export const removeSession = () => {
-  return sessionStorage.clear()
+  return sessionStorage.clear();
 };
 
-/** *****auto token相关******/
-/**
- * 获取本地token
- */
+// 获取本地token
 export const getToken = () => {
-  return getStore(TOKENKEY);
+  return getStore(TOKEN_KEY);
 };
-/**
- * 设置本地token
- * @param {String} token
- */
-export const setToken = token => {
-  return setStore(TOKENKEY, token);
+// 设置本地token
+export const setToken = (token: string) => {
+  return setStore(TOKEN_KEY, token);
 };
 
-/**
- * 移除本地token
- */
+// 移除本地token
 export const removeToken = () => {
-  return removeStore(TOKENKEY);
-};
-/**
- * 判断是否属于非routePath格式
- * @param {String} path - 路由地址
- */
-
-export const isExternal = path => {
-  return /^(https?:|mailto:|tel:)/.test(path);
-};
-/**
- * 兼容的事件绑定方法(兼容ie)
- */
-export const addEvent = (element, event, handler) => {
-  if (document.addEventListener) {
-    if (element && event && handler) {
-      element.addEventListener(event, handler, false);
-    }
-  } else {
-    if (element && event && handler) {
-      element.attachEvent('on' + event, handler);
-    }
-  }
-};
-/**
- * 兼容的事件移除方法(兼容ie)
- */
-export const removeEvent = (element, event, handler) => {
-  if (document.addEventListener) {
-    if (element && event && handler) {
-      element.removeEventListener(event, handler, false);
-    }
-  } else {
-    if (element && event && handler) {
-      element.detachEvent('on' + event, handler);
-    }
-  }
+  return removeStore(TOKEN_KEY);
 };

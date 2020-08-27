@@ -1,5 +1,88 @@
-import Vue from 'vue'
-import Element from 'element-ui'
-import '../element-variables.scss'
+import Vue from 'vue';
+import {
+  Checkbox,
+  Loading,
+  Button,
+  Select,
+  Form,
+  Input,
+  FormItem,
+  Menu,
+  Card,
+  Col,
+  Row,
+  Tooltip,
+  Tabs,
+  TabPane,
+  MenuItem,
+  Submenu,
+  DropdownItem,
+  Dropdown,
+  MessageBox,
+  Message,
+  DropdownMenu,
+  Table,
+  TableColumn,
+  Radio,
+  RadioGroup,
+  RadioButton,
+  Scrollbar,
+  Breadcrumb,
+  BreadcrumbItem,
+  Pagination,
+  Drawer,
+  Tree,
+  Option,
+  Collapse,
+  CollapseItem,
+  DatePicker,
+  Dialog
+} from 'element-ui';
+const elemComponets = [
+  Checkbox,
 
-Vue.use(Element)
+  Loading,
+  Button,
+  Select,
+  Card,
+  Col,
+  Tabs,
+  TabPane,
+  Row,
+  Tooltip,
+  Radio,
+  RadioGroup,
+  RadioButton,
+  Form,
+  Input,
+  FormItem,
+  Menu,
+  MenuItem,
+  Submenu,
+  DropdownItem,
+  Dropdown,
+  DropdownMenu,
+  Table,
+  TableColumn,
+  Radio,
+  RadioGroup,
+  Scrollbar,
+  Breadcrumb,
+  BreadcrumbItem,
+  Pagination,
+  Drawer,
+  Tree,
+  Option,
+  Collapse,
+  CollapseItem,
+  DatePicker,
+  Dialog
+];
+// 全局配置尺寸
+Vue.prototype.$ELEMENT = { size: 'small' };
+
+Vue.prototype.$confirm = MessageBox.confirm; // 注册为全局方法
+Vue.prototype.$message = Message;
+elemComponets.forEach(com => {
+  Vue.use(com);
+});

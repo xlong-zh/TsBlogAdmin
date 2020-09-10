@@ -1,3 +1,7 @@
+// 简单深拷贝
+export function SimpleDeepCopy(val: any): any {
+  return JSON.parse(JSON.stringify(val));
+}
 // 过滤对象中为空的属性
 interface IOriginObj {
   [key: string]: any;

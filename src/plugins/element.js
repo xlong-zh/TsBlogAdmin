@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import {
+  Notification,
   Checkbox,
   Loading,
   Button,
@@ -83,6 +84,7 @@ Vue.prototype.$ELEMENT = { size: 'small' };
 
 Vue.prototype.$confirm = MessageBox.confirm; // 注册为全局方法
 Vue.prototype.$message = Message;
+Vue.prototype.$notify = Notification;
 elemComponets.forEach(com => {
   Vue.use(com);
 });
